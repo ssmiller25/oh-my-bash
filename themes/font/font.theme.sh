@@ -37,6 +37,11 @@ THEME_CLOCK_FORMAT=${THEME_CLOCK_FORMAT:-"%I:%M:%S"}
 VIRTUALENV_THEME_PROMPT_PREFIX='('
 VIRTUALENV_THEME_PROMPT_SUFFIX=') '
 
+function kubernetes_context() {
+   #Shortened context names...
+   echo $(kubectl config current-context | sed 's/k8s-pmc-//' | sed 's/cloudops-//' | sed 's/iot-//' | sed 's/-admin//' | sed 's/-aks//')
+}
+
 function prompt_command() {
     # This needs to be first to save last command return code
     local RC="$?"
@@ -54,7 +59,7 @@ function prompt_command() {
     # Append new history lines to history file
     history -a
 
-    PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_prompt_char_info)${ret_status}→ ${normal}"
+    PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_prompt_char_info)${bold_purple}$(kubernetes_context) ${ret_status}→ ${normal}"
 }
 
 safe_append_prompt_command prompt_command
