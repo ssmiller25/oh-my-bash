@@ -46,7 +46,7 @@ function prompt_command() {
     # This needs to be first to save last command return code
     local RC="$?"
 
-    hostname="${bold_black}\u@\h"
+    hostname="${bold_white}\u@\h"
     virtualenv="${white}$(virtualenv_prompt)"
 
     # Set return status color
