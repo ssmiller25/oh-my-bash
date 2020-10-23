@@ -32,7 +32,7 @@ CLOCK_THEME_PROMPT_PREFIX=''
 CLOCK_THEME_PROMPT_SUFFIX=' '
 THEME_SHOW_CLOCK=true
 THEME_CLOCK_COLOR=${THEME_CLOCK_COLOR:-"$bold_blue"}
-THEME_CLOCK_FORMAT=${THEME_CLOCK_FORMAT:-"%I:%M:%S"}
+THEME_CLOCK_FORMAT=${THEME_CLOCK_FORMAT:-"%H:%M:%S"}
 
 VIRTUALENV_THEME_PROMPT_PREFIX='('
 VIRTUALENV_THEME_PROMPT_SUFFIX=') '
@@ -47,7 +47,7 @@ function prompt_command() {
     local RC="$?"
 
     hostname="${bold_white}\u@\h"
-    virtualenv="${white}$(virtualenv_prompt)"
+#    virtualenv="${white}$(virtualenv_prompt)"
 
     # Set return status color
     if [[ ${RC} == 0 ]]; then
