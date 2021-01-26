@@ -59,7 +59,7 @@ function prompt_command() {
     # Append new history lines to history file
     history -a
 
-    PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_prompt_char_info)${bold_purple}$(kubernetes_context) ${ret_status}→ ${normal}"
+    PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_prompt_char_info)${bold_purple}$(kubernetes_context) ${ret_status}\$ ${normal}"
 }
 
 safe_append_prompt_command prompt_command
